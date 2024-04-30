@@ -4,17 +4,39 @@
  */
 package visao;
 
-/**
- *
- * @author 10724111936
- */
+import modelo.Aluno;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 public class FrmGerenciaAluno extends javax.swing.JFrame {
+
+    private Aluno objetoaluno;
+
+    public void carregaTabela() {
+        DefaultTableModel modelo = (DefaultTableModel) this.JTTabela.getModel();
+        modelo.setNumRows(0); //Posiciona na primeira linha da tabela
+//Carrega a lista de objetos aluno
+        ArrayList<Aluno> minhaLista = objetoaluno.getMinhaLista();
+        for (Aluno a : minhaLista) {
+            modelo.addRow(new Object[]{
+                a.getId(),
+                a.getNome(),
+                a.getIdade(),
+                a.getCurso(),
+                a.getFase()
+            });
+        }
+    }
 
     /**
      * Creates new form FrmGerenciaAluno
      */
     public FrmGerenciaAluno() {
         initComponents();
+        this.objetoaluno = new Aluno();
+        this.carregaTabela();
+
     }
 
     /**
@@ -26,21 +48,150 @@ public class FrmGerenciaAluno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        JTTabela = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        JTFNome = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        JTFIdade = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        JTFCurso = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        JTFFase = new javax.swing.JTextField();
+        JBCancelar = new javax.swing.JButton();
+        JBAlterar = new javax.swing.JButton();
+        JBApagar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Gerenciamento de Alunos");
+
+        JTTabela.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nome", "Idade", "Curso", "Fase"
+            }
+        ));
+        JTTabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTTabelaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(JTTabela);
+
+        jLabel1.setText("Nome:");
+        jLabel1.addHierarchyListener(new java.awt.event.HierarchyListener() {
+            public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
+                jLabel1HierarchyChanged(evt);
+            }
+        });
+
+        jLabel2.setText("Idade:");
+
+        jLabel3.setText("Curso:");
+
+        jLabel4.setText("Fase:");
+
+        JBCancelar.setText("Cancelar");
+        JBCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBCancelarActionPerformed(evt);
+            }
+        });
+
+        JBAlterar.setText("Alterar");
+
+        JBApagar.setText("Apagar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(JTFIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JTFCurso))
+                    .addComponent(JTFNome, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(JBCancelar)
+                                .addGap(36, 36, 36)
+                                .addComponent(JBAlterar)
+                                .addGap(48, 48, 48)
+                                .addComponent(JBApagar))
+                            .addComponent(JTFFase, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(JTFNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(JTFIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(JTFCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(JTFFase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JBCancelar)
+                    .addComponent(JBAlterar)
+                    .addComponent(JBApagar))
+                .addGap(14, 14, 14))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel1HierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_jLabel1HierarchyChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel1HierarchyChanged
+
+    private void JBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_JBCancelarActionPerformed
+
+    private void JTTabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTTabelaMouseClicked
+        // TODO add your handling code here:
+        if (this.JTTabela.getSelectedRow() != -1) {
+
+            String nome = this.JTTabela.getValueAt(this.JTTabela.getSelectedRow(), 1).toString();
+            String idade = this.JTTabela.getValueAt(this.JTTabela.getSelectedRow(), 2).toString();
+            String curso = this.JTTabela.getValueAt(this.JTTabela.getSelectedRow(), 3).toString();
+            String fase = this.JTTabela.getValueAt(this.JTTabela.getSelectedRow(), 4).toString();
+            this.JTFNome.setText(nome);
+            this.JTFIdade.setText(idade);
+            this.JTFCurso.setText(curso);
+            this.JTFFase.setText(fase);
+        }
+    }//GEN-LAST:event_JTTabelaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -78,5 +229,18 @@ public class FrmGerenciaAluno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JBAlterar;
+    private javax.swing.JButton JBApagar;
+    private javax.swing.JButton JBCancelar;
+    private javax.swing.JTextField JTFCurso;
+    private javax.swing.JTextField JTFFase;
+    private javax.swing.JTextField JTFIdade;
+    private javax.swing.JTextField JTFNome;
+    private javax.swing.JTable JTTabela;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
