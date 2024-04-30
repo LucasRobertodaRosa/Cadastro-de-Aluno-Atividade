@@ -4,17 +4,23 @@
  */
 package visao;
 
+import javax.swing.JOptionPane;
+import modelo.Aluno;
+
 /**
  *
  * @author 10724111936
  */
 public class FrmCadastroAluno extends javax.swing.JFrame {
+    
+    private Aluno objetoaluno;
 
     /**
      * Creates new form FrmCadastroAluno
      */
     public FrmCadastroAluno() {
         initComponents();
+        this.objetoaluno = new Aluno();
     }
 
     /**
@@ -26,21 +32,165 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        JTFNome = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        JTFIdade = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        JTFCurso = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        JTFFase = new javax.swing.JTextField();
+        b_cadastrar = new javax.swing.JButton();
+        b_cancelar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("Nome:");
+
+        JTFNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTFNomeActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Idade: ");
+
+        jLabel3.setText("Curso: ");
+
+        jLabel4.setText("Fase: ");
+
+        b_cadastrar.setText("Cadastrar");
+        b_cadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_cadastrarActionPerformed(evt);
+            }
+        });
+
+        b_cancelar.setText("Cancelar");
+        b_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_cancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JTFNome)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JTFCurso)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(JTFIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(JTFFase, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
+                                .addComponent(b_cadastrar))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(b_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(JTFNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(JTFIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(JTFCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(JTFFase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(b_cadastrar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(b_cancelar)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void JTFNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTFNomeActionPerformed
+
+    private void b_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_cadastrarActionPerformed
+        // TODO add your handling code here:
+        try {
+            String nome = "";
+            int idade = 0;
+            String curso = "";
+            int fase = 0;
+
+            if (this.JTFNome.getText().length() < 2) {
+                throw new Mensagens("Nome deve conter ao menos 2 caracteres");
+            } else {
+                nome = this.JTFNome.getText();
+            }
+
+            if (this.JTFIdade.getText().length() <= 0) {
+                throw new Mensagens("Idade deve ser número e maior que zero.");
+            } else {
+                idade = Integer.parseInt(this.JTFIdade.getText());
+            }
+
+            if (this.JTFCurso.getText().length() < 2) {
+                throw new Mensagens("Curso deve conter ao menos 2 caracteres.");
+            } else {
+                curso = this.JTFCurso.getText();
+            }
+
+            if (this.JTFFase.getText().length() <= 0) {
+                throw new Mensagens("Fase deve ser número e maior que zero.");
+            } else {
+                fase = Integer.parseInt(this.JTFFase.getText());
+            }
+
+            if (this.objetoaluno.insertAlunoBD(nome, idade, curso, fase)) {
+                JOptionPane.showMessageDialog(rootPane, "Aluno cadastrado com sucesso");
+                this.JTFNome.setText("");
+                this.JTFIdade.setText("");
+                this.JTFCurso.setText("");
+                this.JTFFase.setText("");
+            }
+            
+            System.out.println(this.objetoaluno.getMinhaLista().toString());
+
+        }catch(Mensagens erro){
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        }catch(NumberFormatException erro2){
+            JOptionPane.showMessageDialog(null,"Informe um numero valido");
+        }
+        
+        
+    }//GEN-LAST:event_b_cadastrarActionPerformed
+
+    private void b_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_cancelarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_b_cancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +228,15 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField JTFCurso;
+    private javax.swing.JTextField JTFFase;
+    private javax.swing.JTextField JTFIdade;
+    private javax.swing.JTextField JTFNome;
+    private javax.swing.JButton b_cadastrar;
+    private javax.swing.JButton b_cancelar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }
