@@ -26,7 +26,48 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        JMCadastrarAluno = new javax.swing.JMenuItem();
+        JMGerenciarAlunos = new javax.swing.JMenuItem();
+        JMSair = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu Principal");
+
+        jMenu1.setText("File");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
+
+        JMCadastrarAluno.setText("Cadastrar Aluno");
+        jMenu1.add(JMCadastrarAluno);
+
+        JMGerenciarAlunos.setText("Gerenciar Alunos");
+        JMGerenciarAlunos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMGerenciarAlunosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(JMGerenciarAlunos);
+
+        JMSair.setText("Sair");
+        JMSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMSairActionPerformed(evt);
+            }
+        });
+        jMenu1.add(JMSair);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -36,11 +77,28 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 277, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        // TODO add your handling code here:
+        FrmCadastroAluno objeto = new FrmCadastroAluno();
+        objeto.setVisible(true);
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void JMGerenciarAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMGerenciarAlunosActionPerformed
+        // TODO add your handling code here:
+        FrmGerenciaAluno objeto = new FrmGerenciaAluno();
+        objeto.setVisible(true);
+    }//GEN-LAST:event_JMGerenciarAlunosActionPerformed
+
+    private void JMSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMSairActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_JMSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +136,11 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem JMCadastrarAluno;
+    private javax.swing.JMenuItem JMGerenciarAlunos;
+    private javax.swing.JMenuItem JMSair;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
