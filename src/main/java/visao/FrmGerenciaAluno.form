@@ -162,11 +162,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Alterar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBAlterarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="JBApagar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Apagar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBApagarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

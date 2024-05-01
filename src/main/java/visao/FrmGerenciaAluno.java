@@ -104,8 +104,18 @@ public class FrmGerenciaAluno extends javax.swing.JFrame {
         });
 
         JBAlterar.setText("Alterar");
+        JBAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBAlterarActionPerformed(evt);
+            }
+        });
 
         JBApagar.setText("Apagar");
+        JBApagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBApagarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -192,6 +202,68 @@ public class FrmGerenciaAluno extends javax.swing.JFrame {
             this.JTFFase.setText(fase);
         }
     }//GEN-LAST:event_JTTabelaMouseClicked
+
+    private void JBApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBApagarActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_JBApagarActionPerformed
+
+    private void JBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAlterarActionPerformed
+        // TODO add your handling code here:
+        try {
+// recebendo e validando dados da interface gráfica.
+            int id = 0;
+            String nome = "";
+            int idade = 0;
+            String curso = "";
+            int fase = 0;
+            if (this.JTFNome.getText().length() < 2) {
+                throw new Mensagens("Nome deve conter ao menos 2 caracteres.");
+            } else {
+                nome = this.JTFNome.getText();
+            }
+            if (this.JTFIdade.getText().length() <= 0) {
+                throw new Mensagens("Idade deve ser número e maior que zero.");
+            } else {
+                idade = Integer.parseInt(this.JTFIdade.getText());
+            }
+            if (this.JTFCurso.getText().length() < 2) {
+                throw new Mensagens("Curso deve conter ao menos 2 caracteres.");
+            } else {
+                curso = this.JTFCurso.getText();
+            }
+            if (this.JTFFase.getText().length() <= 0) {
+                throw new Mensagens("Fase deve ser número e maior que zero.");
+            } else {
+                fase = Integer.parseInt(this.JTFFase.getText());
+            }
+            if (this.JTTabela.getSelectedRow() == -1) {
+                throw new Mensagens("Primeiro Selecione um Aluno para Alterar");
+            } else {
+                id = Integer.parseInt(this.JTTabela.getValueAt(this.JTTabela.getSelectedRow(), 0).toString());
+            }
+// envia os dados para o Aluno processar
+            if (this.objetoaluno.updateAlunoBD(id, nome, idade, curso, fase)) {
+// limpa os campos
+                this.JTFNome.setText("");
+                this.JTFIdade.setText("");
+                this.JTFCurso.setText("");
+                this.JTFFase.setText("");
+                JOptionPane.showMessageDialog(rootPane, "Aluno Alterado com Sucesso!");
+            }
+//Exibe no console o aluno cadastrado
+            System.out.println(this.objetoaluno.getMinhaLista().toString());
+        } catch (Mensagens erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        } catch (NumberFormatException erro2) {
+            JOptionPane.showMessageDialog(null, "Informe um número válido.");
+        } finally {
+// atualiza a tabela.
+            carregaTabela();
+        }
+
+
+    }//GEN-LAST:event_JBAlterarActionPerformed
 
     /**
      * @param args the command line arguments
