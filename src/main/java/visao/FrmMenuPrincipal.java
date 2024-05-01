@@ -44,6 +44,11 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         });
 
         JMCadastrarAluno.setText("Cadastrar Aluno");
+        JMCadastrarAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMCadastrarAlunoActionPerformed(evt);
+            }
+        });
         jMenu1.add(JMCadastrarAluno);
 
         JMGerenciarAlunos.setText("Gerenciar Alunos");
@@ -99,6 +104,12 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_JMSairActionPerformed
+
+    private void JMCadastrarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMCadastrarAlunoActionPerformed
+        // TODO add your handling code here:
+        FrmCadastroAluno objeto = new FrmCadastroAluno();
+        objeto.setVisible(true);
+    }//GEN-LAST:event_JMCadastrarAlunoActionPerformed
 
     /**
      * @param args the command line arguments
