@@ -205,9 +205,39 @@ public class FrmGerenciaAluno extends javax.swing.JFrame {
 
     private void JBApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBApagarActionPerformed
         // TODO add your handling code here:
-
+        try {
+// validando dados da interface gráfica.
+            int id = 0;
+            if (this.JTTabela.getSelectedRow() == -1) {
+                throw new Mensagens("Primeiro Selecione um Aluno para APAGAR");
+            } else {
+                id = Integer.parseInt(this.JTTabela.
+                        getValueAt(this.JTTabela.getSelectedRow(), 0).
+                        toString());
+            }
+// retorna 0 -> primeiro botão | 1 -> segundo botão | 2 -> terceiro botão
+            int respostaUsuario = JOptionPane.
+                    showConfirmDialog(null, "Tem certeza que deseja apagar este Aluno ?");
+            if (respostaUsuario == 0) {// clicou em SIM
+// envia os dados para o Aluno processar
+                if (this.objetoaluno.deleteAlunoBD(id)) {
+// limpa os campos
+                    this.JTFNome.setText("");
+                    this.JTFIdade.setText("");
+                    this.JTFCurso.setText("");
+                    this.JTFFase.setText("");
+                    JOptionPane.showMessageDialog(rootPane, "Aluno Apagado com Sucesso!");
+                }
+            }
+// atualiza a tabela.
+            System.out.println(this.objetoaluno.getMinhaLista().toString());
+        } catch (Mensagens erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        } finally {
+// atualiza a tabela.
+            carregaTabela();
     }//GEN-LAST:event_JBApagarActionPerformed
-
+    }
     private void JBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAlterarActionPerformed
         // TODO add your handling code here:
         try {
